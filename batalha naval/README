@@ -1,0 +1,34 @@
+# API - Application Programming Interface
+
+# rest -> as chamadas partem apenas do cliente, !! modelo reativo
+# sockets -> as chamadas são bilaterais, !! serialização
+
+P1 <-----------> servidor <------------> P2
+
+[XXX [APLICAÇÃO [X [X [TRANSPORTE [REDE [ENLACE [FISICO]]]]]]]]
+[TRANSPORTE [REDE [ENLACE [FISICO]]]]
+
+
+# >>> tecnologias de frontend web
+# [html, css, javascript]
+# [react.js], vue.js, angular
+
+# >>> tecnologias de backend
+# java, php, python, c#, [nodejs (javascript)]
+# banco de dados [SQL/no-SQL (mongodb)], orm
+
+response = request("http://localhost/hello_world?a=123")
+
+# DB BROWSER FOR SQLITE
+
+# MYSQL/MARIA DB 
+# + SQL WORKBENCH
+
+
+
+
+# 14/11 => hoje
+# 21/11 
+# 28/11 
+#  5/12
+# 11 e 12/12 => Avaliação A2
