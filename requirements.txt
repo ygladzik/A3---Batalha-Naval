@@ -2,4 +2,4 @@
 #.\.venv\Scripts\Activate.ps1
 #python -m pip install mpi4py
 #python -m pip install fastapi[all]
-# python -m uvicorn main:app -- reload
+#python -m uvicorn main:app --reload
