@@ -1,7 +1,7 @@
 db.sqlite3
 /__pycache__/*
-/controllers/__pycache__/*
-/data/migrations/*
-/data/__pycache__/*
-/models/__pycache__/*
+batalha_naval/controllers/__pycache__/*
+batalha_naval/data/migrations/*
+batalha_naval/data/__pycache__/*
+batalha_naval/models/__pycache__/*
 .venv/
