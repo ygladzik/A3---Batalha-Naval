@@ -3,10 +3,10 @@
 # rest -> as chamadas partem apenas do cliente, !! modelo reativo
 # sockets -> as chamadas são bilaterais, !! serialização
 
-P1 <-----------> servidor <------------> P2
+# P1 <-----------> servidor <------------> P2
 
-[XXX [APLICAÇÃO [X [X [TRANSPORTE [REDE [ENLACE [FISICO]]]]]]]]
-[TRANSPORTE [REDE [ENLACE [FISICO]]]]
+# [XXX [APLICAÇÃO [X [X [TRANSPORTE [REDE [ENLACE [FISICO]]]]]]]]
+# [TRANSPORTE [REDE [ENLACE [FISICO]]]]
 
 
 # >>> tecnologias de frontend web
@@ -17,7 +17,7 @@ P1 <-----------> servidor <------------> P2
 # java, php, python, c#, [nodejs (javascript)]
 # banco de dados [SQL/no-SQL (mongodb)], orm
 
-response = request("http://localhost/hello_world?a=123")
+#response = request("http://localhost/hello_world?a=123")
 
 # DB BROWSER FOR SQLITE
 
@@ -32,3 +32,12 @@ response = request("http://localhost/hello_world?a=123")
 # 28/11 
 #  5/12
 # 11 e 12/12 => Avaliação A2
+
+
+
+# como fazer sistema de Quick-Play
+# como implementar CI/CD
+# como printar o tabuleiro
+# "criar_partida/{id}" "entrar_partida/'mesmo'{id}" não funciona
+# como conectar HTML com Python
+# como fazer login e autenticador

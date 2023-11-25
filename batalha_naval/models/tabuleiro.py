@@ -46,10 +46,12 @@ class TabuleiroParte():
     #     N: navio inimigo
     #     E: navio do jogador
 
-    def get_quadrante(self, x, y):
+    def get_quadrante_jogador(self, x, y):
         xx = self._dict_alphanum[x]
         return self._matrix2[xx][y-1]
     
+    def get_quadrante_tela(self, x, y):
+        return self._matrix2(x, y)
 
 class Tabuleiro():
     
