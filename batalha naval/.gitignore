@@ -1,4 +1,6 @@
-batalha_naval/__pycache__/
-batalha_naval/batalha_naval/controllers/__pycache__/
-batalha_naval/batalha_naval/data/__pycache__/
-batalha_naval/batalha_naval/models/__pycache__/
+db.sqlite3
+/__pycache__/*
+/controllers/__pycache__/*
+/data/migrations/*
+/data/__pycache__/*
+/models/__pycache__/*
