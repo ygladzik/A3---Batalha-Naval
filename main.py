@@ -3,6 +3,7 @@ from fastapi.responses import RedirectResponse
 from batalha_naval.controllers.jogador_controller import JogadorController
 from batalha_naval.models.partida import Partida
 from batalha_naval.models.tabuleiro import Tabuleiro, TabuleiroParte
+from batalha_naval.controllers.tabuleiro_controller import TabuleiroController
 
 app = FastAPI()
 
@@ -34,3 +35,9 @@ async def get_tabuleiro():
 @app.get("entrar_partida/{id}")
 async def get_tabuleiro():
     return JogadorController.get_instance().lista_ranking_top_3()
+
+@app.patch("/entrar_partida/{id}/colocar/{x}/{y}/{barco}/{rot}")
+async def set_tabuleiro_volta(x: int, y: int, emb: str, rot: int):
+    TabuleiroController.set_tabuleiro(emb, x, y, rot)
+    response = RedirectResponse(url='/entrar_partida/{id}')
+    return response
