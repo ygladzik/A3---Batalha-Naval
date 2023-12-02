@@ -1,12 +1,37 @@
 class TabuleiroParte():
     _x = None
     _y = None
-    _tab = None
+    _tab = [["A","A","A","A","A","A","A","A","A","A"],
+        ["A","A","A","A","A","A","A","A","A","A"],
+        ["A","A","A","A","A","A","A","A","A","A"],
+        ["A","A","A","A","A","A","A","A","A","A"],
+        ["A","A","A","A","A","A","A","A","A","A"],
+        ["A","A","A","A","A","A","A","A","A","A"],
+        ["A","A","A","A","A","A","A","A","A","A"],
+        ["A","A","A","A","A","A","A","A","A","A"],
+        ["A","A","A","A","A","A","A","A","A","A"],
+        ["A","A","A","A","A","A","A","A","A","A"],
+    ]
 
-    def __init__(self):
-        self._x = "ABCDEFGHIJ"
-        self._y = range(10)
-        self._tab = [["A" for x in range(10)] for x in self._y]
+    _dict_alphanum = {
+        0 : "E",
+        1 : "M",
+        2 : "H",
+        3 : "L",
+    }
+
+    _dict_alphanam = {
+        "A" : 0,
+        "B" : 1,
+        "C" : 2,
+        "D" : 3,
+        "E" : 4,
+        "F" : 5,
+        "G" : 6,
+        "H" : 7,
+        "I" : 8,
+        "J" : 9
+    }
 
     def jogada(self, x, y):
         if x in self._x and y in self._y:
@@ -23,18 +48,57 @@ class TabuleiroParte():
         else:
             return False
             
-    #_dict_alphanum = {
-    #    "A" : 0,
-    #    "B" : 1,
-    #    "C" : 2,
-    #    "D" : 3,
-    #    "E" : 4,
-    #    "F" : 5,
-    #    "G" : 6,
-    #    "H" : 7,
-    #    "I" : 8,
-    #    "J" : 9
-    #}
+    def traduz_barco(self, Barco):
+        Barco = self._dict_alphanum[Barco]
+        return Barco
+    
+    def traduz_x(self, x):
+        xx = self._dict_alphanam[x]
+        return xx
+
+    @classmethod
+    def set_tabuleiro(self, xx: int, yy: int, Barco: int, rot: int) -> int:
+            
+        # TabuleiroParte.traduz_x(xx)
+        Birco = TabuleiroParte.traduz_barco(self, Barco)
+        yy = yy-1
+        xx = xx-1
+        posrot = rot
+
+        if xx >=0 <=9 and yy >=0 <=9:
+            pos = self._tab[xx][yy]
+            match pos:
+                case "A":
+                    self._tab[xx][yy] = Birco
+                    if posrot == 0:
+                        self._tab[xx+1][yy] = Birco
+                        self._tab[xx-1][yy] = Birco
+                        self._tab[xx][yy+1] = Birco
+                    elif posrot == 1:
+                        self._tab[xx][yy+1] = Birco
+                        self._tab[xx][yy-1] = Birco
+                        self._tab[xx-1][yy] = Birco
+                    elif posrot == 2:
+                        self._tab[xx][yy-1] = Birco
+                        self._tab[xx-1][yy] = Birco
+                        self._tab[xx+1][yy] = Birco
+                    elif posrot == 3:
+                        self._tab[xx][yy-1] = Birco
+                        self._tab[xx+1][yy] = Birco
+                        self._tab[xx][yy+1] = Birco
+                    else:
+                        return False
+                case "E":
+                    return False
+                case "M":
+                    return False
+                case "H":
+                    return False
+                case "L":
+                    return False
+            raise Exception("Tabuleiro com valor estranho")
+        else:
+            raise Exception("Coordenadas inválidas")
 
     # 10x10
     # [ 'z', 'z', 'z'] === "zzz"

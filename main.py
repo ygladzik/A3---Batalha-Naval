@@ -36,8 +36,8 @@ async def get_tabuleiro():
 async def get_tabuleiro():
     return JogadorController.get_instance().lista_ranking_top_3()
 
-@app.patch("/entrar_partida/{id}/colocar/{x}/{y}/{barco}/{rot}")
-async def set_tabuleiro_volta(x: int, y: int, emb: str, rot: int):
-    TabuleiroController.set_tabuleiro(emb, x, y, rot)
+@app.get("/entrar_partida/{id}/colocar/{x}/{y}/{barco}/{rot}")
+async def set_tabuleiro_volta(x: int, y: int, barco: int, rot: int):
+    TabuleiroParte.set_tabuleiro(x, y, barco, rot)
     response = RedirectResponse(url='/entrar_partida/{id}')
     return response
