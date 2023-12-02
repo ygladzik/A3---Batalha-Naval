@@ -33,14 +33,16 @@ class TabuleiroParte():
         "J" : 9
     }
 
-    def jogada(self, x, y):
-        if x in self._x and y in self._y:
-            xx = self._x.index(x)
-            pos = self._tab[xx][y]
-
+    @classmethod
+    def jogada(self, xx, yy):
+        pos = self._tab[xx][yy]
+        if xx >=0 <=9 and yy >=0 <=9:
             match pos:
                 case "A":
-                    self._tab[xx][y] = "X"
+                    self._tab[xx][yy] = "X"
+                    return True
+                case "E":
+                    self._tab[xx][yy] = "O"
                     return True
                 case "X":
                     return False

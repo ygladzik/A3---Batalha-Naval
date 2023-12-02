@@ -41,3 +41,9 @@ async def set_tabuleiro_volta(x: int, y: int, barco: int, rot: int):
     TabuleiroParte.set_tabuleiro(x, y, barco, rot)
     response = RedirectResponse(url='/entrar_partida/{id}')
     return response
+
+@app.get("/entrar_partida/{id}/atacar/{x}/{y}")
+async def set_tabuleiro_atira_volta(x: int, y: int):
+    TabuleiroParte.jogada(x, y)
+    response = RedirectResponse(url='/entrar_partida/{id}')
+    return response
