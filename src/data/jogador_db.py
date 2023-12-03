@@ -9,6 +9,7 @@ class JogadorDB():
 
     _lista_de_jogadores = []
 
+    #cria uma lista com todas os jogadores presentes no banco de dados
     def popula_do_banco(self):
             # lê do banco de dados
             with sqlite3.connect("batalha_banco.sqlite") as conn:
@@ -37,8 +38,11 @@ class JogadorDB():
     #                    j._pontuacao_acumulada = v[1]
     #                    self._lista_de_jogadores.append(j)
 
+
+    #puxa a função que popula automaticamente
     def __init__(self):
             self.popula_do_banco()
 
+    #função que retorna a lista já populada
     def lista_todos_os_jogadores(self):
             return self._lista_de_jogadores

@@ -26,7 +26,7 @@ class JogadorController:
 
             # jogador_simplificado = { }
             # jogador_simplificado["apelido"] = jogador._apelido
-
+            
             jogadores_dto.append({
                 "apelido": jogador._apelido,
                 "pontuacao": int(jogador._pontuacao_acumulada)

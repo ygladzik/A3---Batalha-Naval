@@ -7,6 +7,9 @@ class Jogador():
     _idade: int = None
     _pontuacao_acumulada: int = 0
 
+    #impede que um Jogador não tenha um nome, email, ou sua idade
+    #seja exagerada ou negativa, como 200 anos e -20 anos
+
     def __init__(self, apelido: str, email: str, senha: str, idade: int):
         if apelido != None:
                 self._apelido = apelido
@@ -29,7 +32,8 @@ class Jogador():
             raise Exception("Não pode idade fora da faixa")
         self._pontuacao = 0
 
-    
+    #aumenta sua pontuação com as vitórias
+
     def pontuar(self):
         self._pontuacao += 1
 
