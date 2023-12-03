@@ -1,8 +1,6 @@
 #Nao comentar o fastapi==0.104.1 e o uvicorn[standard]
 fastapi==0.104.1
 uvicorn[standard]
-npm i -g vercel
-python -m uvicorn main:app --reload
 
 #python -m venv .venv
 #.\.venv\Scripts\Activate.ps1
@@ -11,4 +9,4 @@ python -m uvicorn main:app --reload
 #pip install pytest
 #python -m uvicorn main:app --reload
 #python -m uvicorn main:app --host 0.0.0.0 --port 8808
-#npm i -g vercel
+
