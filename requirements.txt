@@ -2,6 +2,7 @@
 fastapi==0.104.1
 uvicorn[standard]
 npm i -g vercel
+python -m uvicorn main:app --reload
 
 #python -m venv .venv
 #.\.venv\Scripts\Activate.ps1
