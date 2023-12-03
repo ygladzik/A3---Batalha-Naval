@@ -26,14 +26,22 @@ class JogadorDB:
 
       else:
         #le do banco de dados
-        conn = sqlite3.connect("batalha_banco.sqlite")
-        cursor = conn.cursor()
-        res = cursor.execute ("SELECT id, apelido, email, senha, pontuacao FROM jogadores")
-
-        for r in res:
-          self._lista_de_jogadores(Jogador(
-            
-          ))
+        with sqlite3.connect("batalha_banco.sqlite") as conn:
+            cursor = conn.cursor()
+            res = cursor.execute ("SELECT id, apelido, email, senha, pontuacao FROM jogadores")
+    
+            for r in res:
+    
+              j = Jogador(
+                apelido= r[1],
+                email= r[2],
+                senha= r[3]
+              )
+    
+              j._pontuacao_acumulada = r[4]
+              self._lista_de_jogadores.append(j)
+    
+            conn.close()  
         pass
 
 
