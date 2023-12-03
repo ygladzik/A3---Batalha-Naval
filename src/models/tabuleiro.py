@@ -40,44 +40,64 @@ class TabuleiroParte():
         byte = bytes(lista, 'utf-8')
         return byte
     
-    def traduz_barco(self, Barco):
-        Barco = self._dict_alphanum[Barco]
+    @classmethod
+    def traduz_barco(self, emb):
+        Barco = self._dict_alphanum[int(emb)]
         return Barco
     
     def traduz_x(self, x):
         xx = self._dict_alphanam[x]
         return xx
+        
+    @classmethod
+    def jogada(self, xx, yy):
+        x = xx-1
+        y = yy-1
+        pos = self._tab[x][y]
+        if xx >=0 <=9 and yy >=0 <=9:
+            match pos:
+                case "A":
+                    self._tab[x][y] = "X"
+                    return True
+                case "E":
+                    self._tab[x][y] = "O"
+                    return True
+                case "X":
+                    return False
+            raise Exception("Tabuleiro com valor estranho")
+        else:
+            return False
 
     @classmethod
-    def set_tabuleiro(self, xx: int, yy: int, Barco: int, rot: int) -> int:
-            
+    def set_tabuleiro(self, xx: int, yy: int, emb: int, rot: int) -> int:
+
         # TabuleiroParte.traduz_x(xx)
-        Birco = TabuleiroParte.traduz_barco(self, Barco)
-        yy = yy-1
-        xx = xx-1
+        embi = TabuleiroParte.traduz_barco(emb)
+        y = yy-1
+        x = xx-1
         posrot = rot
 
         if xx >=0 <=9 and yy >=0 <=9:
-            pos = self._tab[xx][yy]
+            pos = self._tab[x][y]
             match pos:
                 case "A":
-                    self._tab[xx][yy] = Birco
+                    self._tab[x][y] = embi
                     if posrot == 0:
-                        self._tab[xx+1][yy] = Birco
-                        self._tab[xx-1][yy] = Birco
-                        self._tab[xx][yy+1] = Birco
+                        self._tab[x+1][y] = embi
+                        self._tab[x-1][y] = embi
+                        self._tab[x][y+1] = embi
                     elif posrot == 1:
-                        self._tab[xx][yy+1] = Birco
-                        self._tab[xx][yy-1] = Birco
-                        self._tab[xx-1][yy] = Birco
+                        self._tab[x][y+1] = embi
+                        self._tab[x][y-1] = embi
+                        self._tab[x-1][y] = embi
                     elif posrot == 2:
-                        self._tab[xx][yy-1] = Birco
-                        self._tab[xx-1][yy] = Birco
-                        self._tab[xx+1][yy] = Birco
+                        self._tab[x][y-1] = embi
+                        self._tab[x-1][y] = embi
+                        self._tab[x+1][y] = embi
                     elif posrot == 3:
-                        self._tab[xx][yy-1] = Birco
-                        self._tab[xx+1][yy] = Birco
-                        self._tab[xx][yy+1] = Birco
+                        self._tab[x][y-1] = embi
+                        self._tab[x+1][y] = embi
+                        self._tab[x][y+1] = embi
                     else:
                         return False
                 case "E":
@@ -88,26 +108,8 @@ class TabuleiroParte():
                     return False
                 case "L":
                     return False
-            raise Exception("Tabuleiro com valor estranho")
         else:
             raise Exception("Coordenadas inválidas")
-        
-    @classmethod
-    def jogada(self, xx, yy):
-        pos = self._tab[xx][yy]
-        if xx >=0 <=9 and yy >=0 <=9:
-            match pos:
-                case "A":
-                    self._tab[xx][yy] = "X"
-                    return True
-                case "E":
-                    self._tab[xx][yy] = "O"
-                    return True
-                case "X":
-                    return False
-            raise Exception("Tabuleiro com valor estranho")
-        else:
-            return False
 
     # 10x10
     # [ 'z', 'z', 'z'] === "zzz"

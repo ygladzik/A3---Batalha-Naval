@@ -1,4 +1,4 @@
-from src.models.tabuleiro import Tabuleiro
+from src.models.tabuleiro import Tabuleiro, TabuleiroParte
 
 class TabuleiroController():
 
