@@ -2,5 +2,6 @@
 #.\.venv\Scripts\Activate.ps1
 #python -m pip install mpi4py
 #python -m pip install fastapi[all]
-#python -m uvicorn main:app --reload
 #pip install pytest
+#python -m uvicorn main:app --reload
+#python -m uvicorn main:app --host 0.0.0.0 --port 8808

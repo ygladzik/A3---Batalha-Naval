@@ -38,7 +38,7 @@ async def get_tabuleiro():
 
 @app.get("/entrar_partida/{id}/colocar/{x}/{y}/{barco}/{rot}")
 async def set_tabuleiro_volta(x: int, y: int, barco: int, rot: int):
-    TabuleiroParte.set_tabuleiro(x, y, barco, rot)
+    TabuleiroController.set_tabuleiro(x, y, barco, rot)
     response = RedirectResponse(url='/entrar_partida/{id}')
     return response
 
