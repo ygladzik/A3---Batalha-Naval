@@ -14,6 +14,8 @@ class Partida:
     # ------ CONTADOR ESTÁTICO DE NÚMERO DE PARTIDAS ------
     __contador_id = 0
 
+    #cria um novo id da partida, que a identifica pra diferenciar 
+    #entre as outras
     @classmethod
     def get_novo_id(cls):
         cls.__contador_id = cls.__contador_id + 1
