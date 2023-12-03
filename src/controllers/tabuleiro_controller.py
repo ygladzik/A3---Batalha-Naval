@@ -1,4 +1,4 @@
-from batalha_naval.models.tabuleiro import Tabuleiro
+from src.models.tabuleiro import Tabuleiro
 
 class TabuleiroController():
 

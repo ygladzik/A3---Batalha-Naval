@@ -1,4 +1,4 @@
-from batalha_naval.data.jogador_db import JogadorDB
+from src.data.jogador_db import JogadorDB
 
 class JogadorController:
 

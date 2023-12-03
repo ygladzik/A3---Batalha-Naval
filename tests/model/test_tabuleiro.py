@@ -1,4 +1,4 @@
-#from batalha_naval.models.tabuleiro import TabuleiroParte
+#from src.models.tabuleiro import TabuleiroParte
 
 #__x = ["A" for x in range(10)]
 #__y = range(10)

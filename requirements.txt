@@ -1,3 +1,7 @@
+#Nao comentar o fastapi==0.104.1 e o uvicorn[standard]
+fastapi==0.104.1
+uvicorn[standard]
+
 #python -m venv .venv
 #.\.venv\Scripts\Activate.ps1
 #python -m pip install mpi4py

@@ -1,9 +1,9 @@
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
-from batalha_naval.controllers.jogador_controller import JogadorController
-from batalha_naval.models.partida import Partida
-from batalha_naval.models.tabuleiro import Tabuleiro, TabuleiroParte
-from batalha_naval.controllers.tabuleiro_controller import TabuleiroController
+from src.controllers.jogador_controller import JogadorController
+from src.models.partida import Partida
+from src.models.tabuleiro import Tabuleiro, TabuleiroParte
+from src.controllers.tabuleiro_controller import TabuleiroController
 
 app = FastAPI()
 

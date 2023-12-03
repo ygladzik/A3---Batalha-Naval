@@ -1,5 +1,5 @@
-from batalha_naval.models.jogador import Jogador
-from batalha_naval.models.tabuleiro import Tabuleiro
+from src.models.jogador import Jogador
+from src.models.tabuleiro import Tabuleiro
 
 
 class Partida:
