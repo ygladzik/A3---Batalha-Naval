@@ -1,4 +1,4 @@
-from batalha_naval.models.jogador import Jogador
+from src.models.jogador import Jogador
 
 
 def test_jogador_construtor():

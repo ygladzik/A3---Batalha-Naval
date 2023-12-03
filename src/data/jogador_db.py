@@ -1,5 +1,5 @@
-from batalha_naval.models.jogador import Jogador
-from batalha_naval.data.db_config import ConfigDB
+from src.models.jogador import Jogador
+from src.data.db_config import ConfigDB
 import sqlite3
 
 
