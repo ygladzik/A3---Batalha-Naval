@@ -14,7 +14,7 @@ async def lista_jogadores():
 @app.get("/top3")
 async def ranking_top3():
     return JogadorController.get_instance().lista_ranking_top_3()
-
+    
 @app.get("/criar_partida")
 async def criar_partida():
     id = str(Partida.get_novo_id())
