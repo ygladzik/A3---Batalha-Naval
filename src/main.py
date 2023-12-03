@@ -9,7 +9,7 @@ app = FastAPI()
 
 @app.get("/")
 async def lista_jogadores():
-    return {"massage": "JogadorController.get_instance().lista_todos_os_jogadores()"}
+    return {"message": "JogadorController.get_instance().lista_todos_os_jogadores()"}
 
 @app.get("/top3")
 async def ranking_top3():
