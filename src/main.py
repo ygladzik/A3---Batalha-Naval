@@ -14,7 +14,7 @@ async def lista_jogadores():
 @app.get("/top3")
 async def ranking_top3():
     return JogadorController.get_instance().lista_ranking_top_3()
-    
+
 @app.get("/criar_partida")
 async def criar_partida():
     id = str(Partida.get_novo_id())
@@ -26,9 +26,9 @@ async def get_tabuleiro():
     #byte = bytes(TabuleiroParte.get_tabuleiro(), 'utf-8')
     return TabuleiroParte.get_tabuleiro()
 
-@app.patch("/entrar_partida/{id}/colocar/{x}/{y}/{barco}/{rot}")
+@app.get("/entrar_partida/{id}/colocar/{x}/{y}/{emb}/{rot}")
 async def set_tabuleiro_volta(x: int, y: int, emb: str, rot: int):
-    TabuleiroParte.set_tabuleiro(emb, x, y, rot)
+    TabuleiroParte.set_tabuleiro(x, y, emb, rot)
     response = RedirectResponse(url='/entrar_partida/{id}')
     return response
 
