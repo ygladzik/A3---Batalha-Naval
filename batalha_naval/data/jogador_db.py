@@ -9,19 +9,20 @@ class JogadorDB():
 
     _lista_de_jogadores = []
 
-def popula_do_banco(self):
-         # lê do banco de dados
-         with sqlite3.connect("batalha_banco.sqlite") as conn:
-             cursor = conn.cursor()
-             res = cursor.execute("SELECT id, apelido, email, senha, pontuacao FROM Jogadores")
-             for r in res:
-                 j = Jogador(
-                     apelido=r[1],
-                     email=r[2],
-                     senha=r[3]
-                 )
-                 j._pontuacao_acumulada = r[4]
-                 self._lista_de_jogadores.append(j)
+    def popula_do_banco(self):
+            # lê do banco de dados
+            with sqlite3.connect("batalha_banco.sqlite") as conn:
+                cursor = conn.cursor()
+                res = cursor.execute("SELECT id, apelido, email, senha, pontuacao, idade FROM Jogadores")
+                for r in res:
+                    j = Jogador(
+                        apelido=r[1],
+                        email=r[2],
+                        senha=r[3],
+                        idade=r[5]
+                    )
+                    j._pontuacao_acumulada = r[4]
+                    self._lista_de_jogadores.append(j)
 #
     #def popula_do_arquivo(self):
     #    with open(self.FONTE_DOS_DADOS) as f:
@@ -35,9 +36,9 @@ def popula_do_banco(self):
     #                    j = Jogador(v[0], v[2], v[3])
     #                    j._pontuacao_acumulada = v[1]
     #                    self._lista_de_jogadores.append(j)
-#
-def __init__(self):
-           self.popula_do_banco()
-#
-def lista_todos_os_jogadores(self):
-        return self._lista_de_jogadores
+
+    def __init__(self):
+            self.popula_do_banco()
+
+    def lista_todos_os_jogadores(self):
+            return self._lista_de_jogadores
