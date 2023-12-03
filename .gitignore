@@ -5,4 +5,5 @@ batalha_naval/data/migrations/*
 batalha_naval/data/__pycache__/*
 batalha_naval/models/__pycache__/*
 .venv/
-tests.model.__pycache__
+tests/model/__pycache__/*
+tests/controller/__pycache__/*
