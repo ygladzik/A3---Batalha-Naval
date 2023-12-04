@@ -1,43 +1,123 @@
-# API - Application Programming Interface
-
 # rest -> as chamadas partem apenas do cliente, !! modelo reativo
-# sockets -> as chamadas são bilaterais, !! serialização
 
-# P1 <-----------> servidor <------------> P2
+# Conectando com o serviço, lhe entregando a lista de jogadores. Substitua o "localhost" 
+# pelo ip da máquina que quer acessar
+# localhost:8808|8000/
 
-# [XXX [APLICAÇÃO [X [X [TRANSPORTE [REDE [ENLACE [FISICO]]]]]]]]
-# [TRANSPORTE [REDE [ENLACE [FISICO]]]]
+# Entra em uma subcategoria da lista de jogadores, mostrando os 3 que têm maior pontuação
+# localhost:8808|8000/top3
 
+# Crie sua partida para que seu adversário possa entrar, e deverá ser redirecionado
+# localhost:8808|8000/criar_partida
 
-# >>> tecnologias de frontend web
-# [html, css, javascript]
-# [react.js], vue.js, angular
+# A partida que entrará conterá o seguinte link: que deve ser compartilhado com quem quer
+# enfrentar
+# localhost:8808|8000/entrar_partida/{id}
 
-# >>> tecnologias de backend
-# java, php, python, c#, [nodejs (javascript)]
-# banco de dados [SQL/no-SQL (mongodb)], orm
+# Comando que colocará seu barco no campo: X: controlará o quão pra esquerda e direita
+# ele estará, Y: controlará o quão pra cima e para baixo ele está em seu tabuleiro, 
+# Emb: Define qual será o formato do seu barco e Rot: que definirá para qual lado ele vai estar
+# localhost:8808|8000/entrar_partida/{id}/colocar/{x}/{y}/{emb}/{rot}
 
-#response = request("http://localhost/hello_world?a=123")
+# Usando barcação inexistente para demonstrar Rot, considere que A é Água e % é o formato de
+# sua embarcação, apenas por melhor discernimento na leitura:
 
-# DB BROWSER FOR SQLITE
++y = direita
+-y = esquerda
+-x = cima
++x = baixo
 
-# MYSQL/MARIA DB 
-# + SQL WORKBENCH
+# Rot 0:
+# A % A
+# A % %
+# A % A
 
+# Rot 1:
+# A % A
+# % % %
+# A A A
 
+# Rot 2:
+# A % A
+# % % A
+# A % A
 
+# Rot 3:
+# A A A
+# % % %
+# A % A
 
-# 14/11 => hoje
-# 21/11 
-# 28/11 
-#  5/12
-# 11 e 12/12 => Avaliação A2
+# Descrição das embarcações, considerando que o centro da matriz é o centro
+# da embarcação, na rotação 0:
 
+# 0 : P
 
+# A A A A A A A
+# A A A A A A A
+# A A A A A A A
+# A A A % A A A
+# A A A A A A A
+# A A A A A A A
+# A A A A A A A
 
-# como fazer sistema de Quick-Play
-# como implementar CI/CD
-# como printar o tabuleiro
-# "criar_partida/{id}" "entrar_partida/'mesmo'{id}" não funciona
-# como conectar HTML com Python
-# como fazer login e autenticador
+# 1 : G
+
+# A A A A A A A
+# A A A A A A A
+# A A A A A A A
+# A A A % % A A
+# A A A A A A A
+# A A A A A A A
+# A A A A A A A
+
+# 2 : L
+
+# A A A A A A A
+# A A A A A A A
+# A A A A A A A
+# A A A % % % A
+# A A A A A A A
+# A A A A A A A
+# A A A A A A A
+
+# 3 : T
+
+# A A A A A A A
+# A A A A A A A
+# A A A % A A A
+# A A A % % % A
+# A A A % A A A
+# A A A A A A A
+# A A A A A A A
+
+# 4 : I
+
+# A A A A A A A
+# A A A A A A A
+# A A A A A A A
+# A A A % % % %
+# A A A A A A A
+# A A A A A A A
+# A A A A A A A
+
+# Esteja ciente de que o centro de seu barco sempre tentará ser a ponta de seu navio, ou
+# então a união entre duas pontas do topo de um T, como o exemplo anterior, em que seu centro
+# estava sempre no centro das matrixes
+
+# EXEMPLO:
+# localhost:8808|8000/entrar_partida/{id}/colocar/2/2/2/1
+# Colocará um barco na segunda coluna, segunda linha, o barco 2 na rotação 1
+
+# A % A A A
+# A % A A A
+# A A A A A
+# A A A A A
+# A A A A A
+
+# Disparos. Para fazer um disparo, basta colocar: e as coordenadas colcoadas
+# receberão um disparo, lhe dando uma resposta diferente para caso acertou ou não.
+# Se apenas água foi acertada, marcará com um "X", porém, se um barco for atingido
+# ocorrerá uma grande explosão, deixando um "O" no local, mas cuidado, pois
+# pode acabar acertando sua própria embarcação!
+
+# localhost:8808|8000/entrar_partida/{id}/atacar/{x}/{y}
