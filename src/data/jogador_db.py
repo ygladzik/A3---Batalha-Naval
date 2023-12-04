@@ -46,3 +46,8 @@ class JogadorDB():
     #função que retorna a lista já populada
     def lista_todos_os_jogadores(self):
             return self._lista_de_jogadores
+    #função que adiciona jogadores ao banco    
+    def inserir_jogador_no_banco(self, jogador: Jogador):
+        sqlite_insert = """INSERT INTO Jogadores (apelido, email, pontuacao, senha, idade) VALUES (?, ?, ?, ?, ?);"""
+        val =  (jogador._apelido, jogador._email, jogador._pontuacao_acumulada, jogador._senha, jogador._idade)
+        ConfigDB(sqlite_insert, val)

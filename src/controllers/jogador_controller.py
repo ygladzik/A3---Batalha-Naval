@@ -1,4 +1,6 @@
 from src.data.jogador_db import JogadorDB
+from src.models.jogador import Jogador
+import hashlib
 
 class JogadorController:
 
@@ -40,4 +42,8 @@ class JogadorController:
 
         # DTO => data transfer object
         return v_ordenado[:3]   # syntax sugar
-
+    
+    def adicionar_jogador(self, apelido: str, email: str, senha: str, idade: int):
+        senha = hashlib.md5(senha.encode('utf-8'))
+        senha = senha.hexdigest()
+        j = Jogador(apelido, email, senha, idade)
