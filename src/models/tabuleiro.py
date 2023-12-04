@@ -18,10 +18,11 @@ class TabuleiroParte():
     #alfabeto que transforma o int dado pelo barco em caracter que
     #será colocado no tabuleiro
     _dict_alphanum = {
-        0 : "E",
-        1 : "M",
-        2 : "H",
-        3 : "L",
+        0 : "P",
+        1 : "G",
+        2 : "L",
+        3 : "T",
+        4 : "I",
     }
 
     _dict_alphanam = {
@@ -74,7 +75,19 @@ class TabuleiroParte():
                     self._tab[x][y] = "X"
                     return True
                 #se for uma embarcação, marca com O
-                case "E":
+                case "P":
+                    self._tab[x][y] = "O"
+                    return True
+                case "G":
+                    self._tab[x][y] = "O"
+                    return True
+                case "L":
+                    self._tab[x][y] = "O"
+                    return True
+                case "T":
+                    self._tab[x][y] = "O"
+                    return True
+                case "I":
                     self._tab[x][y] = "O"
                     return True
                 #não permite atirar em um lugar que já foi disparado
@@ -101,73 +114,101 @@ class TabuleiroParte():
             match pos:
                 #permite que o barco seja colocado
                 case "A":
-                    self._tab[x][y] = embi
-                    #ifs e elifs que dizem pra qual direção o barco será
-                    if posrot == 0:
-                        self._tab[x+1][y] = embi
-                        self._tab[x-1][y] = embi
-                        self._tab[x][y+1] = embi
-                    elif posrot == 1:
-                        self._tab[x][y+1] = embi
-                        self._tab[x][y-1] = embi
-                        self._tab[x-1][y] = embi
-                    elif posrot == 2:
-                        self._tab[x][y-1] = embi
-                        self._tab[x-1][y] = embi
-                        self._tab[x+1][y] = embi
-                    elif posrot == 3:
-                        self._tab[x][y-1] = embi
-                        self._tab[x+1][y] = embi
-                        self._tab[x][y+1] = embi
-                    else:
-                        return False
+                    match embi:
+                        #ifs e elifs que dizem pra qual direção o barco será e seu formato
+                        case "P":
+                            self._tab[x][y] = embi
+                        case "G":
+                            self._tab[x][y] = embi
+                            if posrot == 0:
+                                self._tab[x][y+1] = embi
+                            elif posrot == 1:
+                                self._tab[x-1][y] = embi
+                            elif posrot == 2:
+                                self._tab[x][y-1] = embi
+                            elif posrot == 3:
+                                self._tab[x+1][y] = embi
+                            else:
+                                return False
+                        case "L":
+                            self._tab[x][y] = embi
+                            if posrot == 0:
+                                self._tab[x][y+1] = embi
+                                self._tab[x][y+2] = embi
+                            elif posrot == 1:
+                                self._tab[x-1][y] = embi
+                                self._tab[x-2][y] = embi
+                            elif posrot == 2:
+                                self._tab[x][y-1] = embi
+                                self._tab[x][y-2] = embi
+                            elif posrot == 3:
+                                self._tab[x+1][y] = embi
+                                self._tab[x+2][y] = embi
+                            else:
+                                return False
+                        case "T":
+                            self._tab[x][y] = embi
+                            if posrot == 0:
+                                self._tab[x][y+1] = embi
+                                self._tab[x][y+2] = embi
+                                self._tab[x-1][y] = embi
+                                self._tab[x+1][y] = embi
+                            elif posrot == 1:
+                                self._tab[x-1][y] = embi
+                                self._tab[x-2][y] = embi
+                                self._tab[x][y+1] = embi
+                                self._tab[x][y-1] = embi
+                            elif posrot == 2:
+                                self._tab[x][y-1] = embi
+                                self._tab[x][y-2] = embi
+                                self._tab[x+1][y] = embi
+                                self._tab[x-1][y] = embi
+                            elif posrot == 3:
+                                self._tab[x+1][y] = embi
+                                self._tab[x+2][y] = embi
+                                self._tab[x][y+1] = embi
+                                self._tab[x][y-1] = embi
+                            else:
+                                return False
+                        case "I":
+                            self._tab[x][y] = embi
+                            if posrot == 0:
+                                self._tab[x][y+1] = embi
+                                self._tab[x][y+2] = embi
+                                self._tab[x][y+3] = embi
+                            elif posrot == 1:
+                                self._tab[x-1][y] = embi
+                                self._tab[x-2][y] = embi
+                                self._tab[x-3][y] = embi
+                            elif posrot == 2:
+                                self._tab[x][y-1] = embi
+                                self._tab[x][y-2] = embi
+                                self._tab[x][y-3] = embi
+                            elif posrot == 3:
+                                self._tab[x+1][y] = embi
+                                self._tab[x+2][y] = embi
+                                self._tab[x+3][y] = embi
+                            else:
+                                return False
                 #impede que coloque um barco em cima de outro
-                case "E":
+                case "P":
                     return False
-                case "M":
-                    return False
-                case "H":
+                case "G":
                     return False
                 case "L":
                     return False
+                case "T":
+                    return False
+                case "I":
+                    return False
         else:
             raise Exception("Coordenadas inválidas")
-
-    # 10x10
-    # [ 'z', 'z', 'z'] === "zzz"
-    #_matrix = [
-    #    [ 'XXXXXXXXXX' ], # 0
-    #    [ 'XXXXXXXXXX' ], # 1
-    #    [ 'XXXXXXXXXX' ], # ...
-    #    [ 'XXXXXXXXXX' ],
-    #    [ 'XXXXXXXXXX' ],
-    #    [ 'XXXXXXXXXX' ],
-    #    [ 'XXXXXXXXXX' ],
-    #    [ 'XXXXXXXXXX' ],
-    #    [ 'XXXXXXXXXX' ],
-    #    [ 'XXXXXXXXXX' ]
-    #]
-
-    #_matrix2 = ["XXXXXXXXXX" for x in range(10)]
 
 
     def set_quadrante(self, x, y, val):
         xx = self._dict_alphanum[x]
         yy = y-1
         self._matrix2[xx][yy] = val
-
-
-    # get_quadrante
-    # @param x: coordenada X (valores de A à J)
-    # @param y: coordenada Y (valores entre 1 e 10)
-    # @return : caracteres do quadrante
-    #     X: água
-    #     O: não descoberto ainda
-    #     N: navio inimigo
-    #     E: navio do jogador
-
-    #pega um quadrante específico da matrix do tabuleiro,
-    #mas como não foi utilizado, não mexemos
 
     def get_quadrante_jogador(self, x, y):
         xx = self._dict_alphanum[x]
