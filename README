@@ -22,11 +22,6 @@
 # Usando barcação inexistente para demonstrar Rot, considere que A é Água e % é o formato de
 # sua embarcação, apenas por melhor discernimento na leitura:
 
-+y = direita
--y = esquerda
--x = cima
-+x = baixo
-
 # Rot 0:
 # A % A
 # A % %
