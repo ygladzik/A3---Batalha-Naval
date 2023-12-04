@@ -10,11 +10,11 @@ class JogadorController:
     def __init__(self):
         self._db = JogadorDB()
 
-    @classmethod
-    def get_instance(cls):
-        if cls._instance is None:
-            cls._instance = JogadorController()
-        return cls._instance
+    # @classmethod
+    # def get_instance(cls):
+    #     if cls._instance is None:
+    #         cls._instance = JogadorController()
+    #     return cls._instance
     
     def lista_todos_os_jogadores(self):
         return self._db.lista_todos_os_jogadores()
