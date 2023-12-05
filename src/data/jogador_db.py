@@ -24,20 +24,6 @@ class JogadorDB():
                     )
                     j._pontuacao_acumulada = r[4]
                     self._lista_de_jogadores.append(j)
-#
-    #def popula_do_arquivo(self):
-    #    with open(self.FONTE_DOS_DADOS) as f:
-    #            linhas = f.readlines()
-    #            for linha in linhas:
-    #                # trim() -> remove espaços no início e final da string
-    #                # no python, trim se chama "strip"
-    #                if linha.strip() != "":
-    #                    print(linha)
-    #                    v = linha.replace("\n","").split(";")
-    #                    j = Jogador(v[0], v[2], v[3])
-    #                    j._pontuacao_acumulada = v[1]
-    #                    self._lista_de_jogadores.append(j)
-
 
     #puxa a função que popula automaticamente
     def __init__(self):
@@ -46,6 +32,7 @@ class JogadorDB():
     #função que retorna a lista já populada
     def lista_todos_os_jogadores(self):
             return self._lista_de_jogadores
+    
     #função que adiciona jogadores ao banco    
     def inserir_jogador_no_banco(self, jogador: Jogador):
         sqlite_insert = """INSERT INTO Jogadores (apelido, email, pontuacao, senha, idade) VALUES (?, ?, ?, ?, ?);"""

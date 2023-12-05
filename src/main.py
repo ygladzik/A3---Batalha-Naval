@@ -8,16 +8,10 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-
 #página inicial, que mostra apenas a lista dos jogadores
 @app.get("/")
 async def lista_jogadores():
     return JogadorController.get_instance().lista_todos_os_jogadores()
-
-#página que registra o jogador
-@app.get("/registro/{apelido}/{email}/{senha}/{idade}")
-def adicionar_jogador(apelido: str, email: str, senha: str, idade: int):
-    return JogadorController.adicionar_jogador(apelido, email, senha, idade)
 
 #página que mostra o Top 3 de jogadores com maior pontuação
 @app.get("/top3")
