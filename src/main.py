@@ -4,6 +4,7 @@ from src.controllers.jogador_controller import JogadorController
 from src.models.partida import Partida
 from src.models.tabuleiro import Tabuleiro, TabuleiroParte
 from src.controllers.tabuleiro_controller import TabuleiroController
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
@@ -47,3 +48,13 @@ async def set_tabuleiro_atira_volta(x: int, y: int):
     TabuleiroParte.jogada(x, y)
     response = RedirectResponse(url='/entrar_partida/{id}')
     return response
+
+
+# Configuração do middleware CORS para permitir solicitações da origem do frontend
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://127.0.0.1:5501"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
