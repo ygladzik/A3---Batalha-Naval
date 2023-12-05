@@ -52,12 +52,6 @@ class TabuleiroParte():
     def traduz_barco(self, emb):
         Barco = self._dict_alphanum[int(emb)]
         return Barco
-    
-#servia pra traduzir as lanes de "A" até "J", porém não consegui
-#implementar a aceitação de str na URL
-    def traduz_x(self, x):
-        xx = self._dict_alphanam[x]
-        return xx
         
 #faz a jogada, ou seja, dispara a bomba no campo, com resultados
 #diferentes para alvos diferentes, como por exemplo: se acertar
@@ -203,16 +197,6 @@ class TabuleiroParte():
                     return False
         else:
             raise Exception("Coordenadas inválidas")
-
-
-    def set_quadrante(self, x, y, val):
-        xx = self._dict_alphanum[x]
-        yy = y-1
-        self._matrix2[xx][yy] = val
-
-    def get_quadrante_jogador(self, x, y):
-        xx = self._dict_alphanum[x]
-        return self._matrix2[xx][y-1]
 
 class Tabuleiro():
     
